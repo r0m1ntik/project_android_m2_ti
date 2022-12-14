@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">Boavizta</string>
+    <string name="app_name" translatable="false">BoaviztApp</string>
+    <string name="image_du_haut" translatable="false">image_du_haut</string>
+    <string name="boavizta" translatable="false">BoaviztApp</string>
+    <string name="d_couvrez_l_impact_environnemental_de_votre_serveur_en_quelques_clics" translatable="false">Discover the environmental impact of your server in a few clicks</string>
+    <string name="Logo" translatable="false">Logo</string>
+    <string name="chargement_en_cours" translatable="false">Loading</string>
+    <string name="config_server" translatable="false">SERVER CONFIGURATION</string>
+    <string name="calcule" translatable="false">CALCULATE</string>
+    <string name="quantit" translatable="false">Quantity</string>
+    <string name="cpu" translatable="false">CPU</string>
+    <string name="ram" translatable="false">RAM</string>
+    <string name="quantite" translatable="false">Quantity</string>
+    <string name="nb_coeurs" translatable="false">Core units</string>
+    <string name="architecture" translatable="false">Architecture</string>
+    <string name="capacity_gb">Capacity (GB)</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="ssd">SSD</string>
+    <string name="hdd">HDD</string>
+    <string name="please_wait">Please wait ...</string>
+    <string name="todo">TODO</string>
+    <string name="button_calculate">Button calculate</string>
 </resources>

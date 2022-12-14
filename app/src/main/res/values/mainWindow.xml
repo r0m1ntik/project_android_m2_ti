@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.AppCompat.Light.NoActionBar.Boavizta" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="Theme.AppCompat.Light.NoActionBar.MainWindow" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -10,9 +11,8 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/greenDark_boavizt</item>
-        <item name="android:navigationBarColor">@color/greenDark_boavizt</item>
-        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:navigationBarColor">@color/white</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>
