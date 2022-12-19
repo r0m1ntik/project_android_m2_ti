@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar.MainWindow"
+    tools:context=".NoConnectionInternet">
+
+
+    <ImageView
+        android:id="@+id/BoaviztaButtonHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/image_du_haut"
+        android:foregroundTint="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/BoaviztaTextHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:fontFamily="sans-serif-medium"
+        android:minHeight="48dp"
+        android:text="@string/boavizta"
+        android:textColor="@color/greenDark_boavizt"
+        android:textColorHighlight="@color/greenDark_boavizt"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/BoaviztaButtonHeader"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/BoaviztaSousTextHeader"
+        style="@android:style/Widget.Holo.TextView"
+        android:layout_width="391dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/d_couvrez_l_impact_environnemental_de_votre_serveur_en_quelques_clics"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#00838F"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BoaviztaTextHeader" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="301dp"
+        android:layout_height="399dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="55dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BoaviztaSousTextHeader"
+        app:srcCompat="@drawable/no_internet"
+        android:contentDescription="@string/no_internet_connection" />
+
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="300dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="-40dp"
+        android:layout_marginEnd="133dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/no_connection"
+        android:textAlignment="center"
+        android:textColor="#E0F2F1"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/test_error"
+        android:layout_width="406dp"
+        android:layout_height="26dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/please_check_your_internet_connection_and_try_again"
+        android:textAlignment="center"
+        android:textColor="#E0F2F1"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/btn_try_again"
+        android:layout_width="231dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="70dp"
+        android:text="@string/try_again"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_error" />
+</androidx.constraintlayout.widget.ConstraintLayout>

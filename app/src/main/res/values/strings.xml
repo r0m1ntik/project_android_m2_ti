@@ -17,7 +17,14 @@
     <string name="manufacturer">Manufacturer</string>
     <string name="ssd">SSD</string>
     <string name="hdd">HDD</string>
-    <string name="please_wait">Please wait ...</string>
+    <string name="please_wait">Please wait …</string>
     <string name="todo">TODO</string>
     <string name="button_calculate">Button calculate</string>
+    <string name="no_internet_connection">no_internet_connection</string>
+    <string name="no_connection">No connection!</string>
+    <string name="please_check_your_internet_connection_and_try_again">Please check your internet connection and try again.</string>
+    <string name="try_again">Try again</string>
+    <string name="couldn_t_get_json_from_server">Couldn\'t get json from server.</string>
+    <string name="error">Error</string>
+    <string name="error_img">error_img</string>
 </resources>

@@ -3,20 +3,20 @@ package fr.univpau.boavizta;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import fr.univpau.boavizta.cpu.Architecture;
-import fr.univpau.boavizta.ram.Manufacturer;
+import fr.univpau.boavizta.ram.RAM_Manufacturer;
+import fr.univpau.boavizta.ssd.SSD_Manufacturer;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
     private Function mFunction;
+    private Intent mIntent;
+    private Intent mErrorIntent;
     // CPU
     private NumberPicker mNumberPickerCpuNb;
     private NumberPicker mNumberPickerCpuCoreUnit;
@@ -39,17 +39,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         System.out.println("onCreate()");
         setContentView(R.layout.activity_main);
         mFunction = new Function();
-
-        // INITIALISATION
-        Architecture.Init();
-        fr.univpau.boavizta.ram.Manufacturer.Init();
-        fr.univpau.boavizta.ssd.Manufacturer.Init();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         System.out.println("onStart()");
+        mIntent = new Intent(MainActivity.this, NoConnectionInternet.class);
+        mErrorIntent = new Intent(MainActivity.this, Error.class);
 
         ImageView BoaviztaButtonHeader = findViewById(R.id.BoaviztaButtonHeader);
         TextView BoaviztaTextHeader = findViewById(R.id.BoaviztaTextHeader);
@@ -57,6 +54,67 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         BoaviztaButtonHeader.setOnClickListener(this);
         BoaviztaTextHeader.setOnClickListener(this);
 
+        if (Architecture.getArchitectureArrayList().isEmpty()) {
+            mErrorIntent.putExtra("error_info", "<CPU> Couldn't get json from server.");
+            finish();
+        } else if (RAM_Manufacturer.getManufacturerArrayList().isEmpty()) {
+            mErrorIntent.putExtra("error_info", "<RAM> Couldn't get json from server.");
+            finish();
+        } else if (SSD_Manufacturer.getManufacturerArrayList().isEmpty()) {
+            mErrorIntent.putExtra("error_info", "<SSD> Couldn't get json from server.");
+            finish();
+        } else {
+            loadingData();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("onDestroy()");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        System.out.println("onRestart()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("onResume()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.out.println("onPause()");
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        if (!mFunction.isNetworkAvailable(getApplication())) {
+            startActivity(mIntent);
+            finish();
+        } else {
+            onStart();
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        // en cliquant sur le logo ou le nom on va ouvrir la page web de Boavizta
+        if (mFunction.isNetworkAvailable(getApplication())) {
+            startActivity(mIntent);
+            finish();
+        } else {
+            startActivity(new Intent(MainActivity.this, NoConnectionInternet.class));
+            finish();
+        }
+    }
+
+    private void loadingData() {
         // Initialisation par default CPU
         mNumberPickerCpuNb = findViewById(R.id.cpu_qt_np);
         mNumberPickerCpuNb.setMaxValue(1000);
@@ -87,8 +145,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mNumberPickerRamManufacturer = findViewById(R.id.ram_name_manufacturer);
         mNumberPickerRamManufacturer.setMinValue(0);
-        mNumberPickerRamManufacturer.setMaxValue(Manufacturer.getManufacturerArrayList().size() - 1);
-        mNumberPickerRamManufacturer.setDisplayedValues(Manufacturer.manifacturerNames());
+        mNumberPickerRamManufacturer.setMaxValue(RAM_Manufacturer.getManufacturerArrayList().size() - 1);
+        mNumberPickerRamManufacturer.setDisplayedValues(RAM_Manufacturer.manifacturerNames());
 
         // Initialisation par default SSD
         mNumberPickerSsdNb = findViewById(R.id.ssd_nb_quantite);
@@ -103,8 +161,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mNumberPickerSsdManufacturer = findViewById(R.id.ssd_name_manufacturer);
         mNumberPickerSsdManufacturer.setMinValue(0);
-        mNumberPickerSsdManufacturer.setMaxValue(fr.univpau.boavizta.ssd.Manufacturer.getManufacturerArrayList().size() - 1);
-        mNumberPickerSsdManufacturer.setDisplayedValues(fr.univpau.boavizta.ssd.Manufacturer.manifacturerNames());
+        mNumberPickerSsdManufacturer.setMaxValue(SSD_Manufacturer.getManufacturerArrayList().size() - 1);
+        mNumberPickerSsdManufacturer.setDisplayedValues(SSD_Manufacturer.manifacturerNames());
 
         // Initialisation par default HDD
         mNumberPickerHddNb = findViewById(R.id.hdd_nb_quantite);
@@ -116,40 +174,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mNumberPickerHddCapacity.setMinValue(0);
         mNumberPickerHddCapacity.setMaxValue(100000);
         mNumberPickerHddCapacity.setValue(1000);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        System.out.println("onDestroy()");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        System.out.println("onRestart()");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        System.out.println("onResume()");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        System.out.println("onPause()");
-    }
-
-    @Override
-    public void onClick(View v) {
-        // en cliquant sur le logo ou le nom on va ouvrir la page web de Boavizta
-        if (mFunction.isNetworkAvailable(getApplication())) {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://boavizta.org/"));
-            startActivity(intent);
-        } else {
-            Toast.makeText(getApplicationContext(), "Aucune connection internet !", Toast.LENGTH_SHORT).show();
-        }
     }
 }

@@ -1,36 +1,34 @@
-package fr.univpau.boavizta.cpu;
+package fr.univpau.boavizta.ram;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import org.json.JSONArray;
 import org.json.JSONException;
+
 import java.util.ArrayList;
+
 import fr.univpau.boavizta.HttpHandler;
 
-public class Architecture extends AppCompatActivity {
+public class RAM_Manufacturer {
 
-    private static ArrayList<Architecture> ArchitectureArrayList;
+    private static ArrayList<RAM_Manufacturer> ManufacturerArrayList;
     private final int id;
     private final String name;
-    private static Intent mIntent;
 
-    public Architecture(int id, String name) {
+    public RAM_Manufacturer(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public static ArrayList<Architecture> getArchitectureArrayList() {
-        return ArchitectureArrayList;
+    public static ArrayList<RAM_Manufacturer> getManufacturerArrayList() {
+        return ManufacturerArrayList;
     }
 
-    public static String[] architectureNames() {
-        String[] names = new String[ArchitectureArrayList.size()];
-        for (Architecture a : ArchitectureArrayList) {
-            names[a.getId()] = a.getName();
+    public static String[] manifacturerNames() {
+        String[] names = new String[ManufacturerArrayList.size()];
+        for (RAM_Manufacturer m : ManufacturerArrayList) {
+            names[m.getId()] = m.getName();
         }
         return names;
     }
@@ -43,7 +41,7 @@ public class Architecture extends AppCompatActivity {
         return name;
     }
 
-    public static class GetArchitectures extends AsyncTask<Void, Void, Void> {
+    public static class GetManufacturer extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -54,23 +52,25 @@ public class Architecture extends AppCompatActivity {
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
             // Making a request to url and getting response
-            String url = "https://uppa.api.boavizta.org/v1/utils/cpu_family";
+            String url = "https://uppa.api.boavizta.org/v1/utils/ram_manufacturer";
             String jsonStr = sh.makeServiceCall(url, "GET");
 
-            Log.e("Architecture", "Response from url: " + jsonStr);
+            Log.e("RAM Manufacturer", "Response from url: " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONArray jsonArray = new JSONArray(jsonStr);
-                    ArchitectureArrayList = new ArrayList<>();
+                    ManufacturerArrayList = new ArrayList<>();
                     for(int i = 0; i < jsonArray.length(); i++) {
-                        ArchitectureArrayList.add(new Architecture(i, jsonArray.getString(i)));
+                        ManufacturerArrayList.add(new RAM_Manufacturer(i, jsonArray.getString(i)));
+                    }
+                    for(int i = jsonArray.length(); i < jsonArray.length(); i++) {
+                        ManufacturerArrayList.add(new RAM_Manufacturer(i, jsonArray.getString(i)));
                     }
                 } catch (final JSONException e) {
-                    Log.e("Architecture", "Json parsing error: " + e.getMessage());
+                    Log.e("RAM Manufacturer", "Json parsing errors: " + e.getMessage());
                 }
             } else {
-                // données non récuperer
-                Log.e("Architecture", "Couldn't get json from server.");
+                Log.e("RAM Manufacturer", "Couldn't get json from server.");
             }
             return null;
         }
