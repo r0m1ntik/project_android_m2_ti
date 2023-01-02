@@ -7,7 +7,6 @@
     <string name="chargement_en_cours" translatable="false">Loading</string>
     <string name="config_server" translatable="false">SERVER CONFIGURATION</string>
     <string name="calcule" translatable="false">CALCULATE</string>
-    <string name="quantit" translatable="false">Quantity</string>
     <string name="cpu" translatable="false">CPU</string>
     <string name="ram" translatable="false">RAM</string>
     <string name="quantite" translatable="false">Quantity</string>
@@ -18,8 +17,6 @@
     <string name="ssd">SSD</string>
     <string name="hdd">HDD</string>
     <string name="please_wait">Please wait …</string>
-    <string name="todo">TODO</string>
-    <string name="button_calculate">Button calculate</string>
     <string name="no_internet_connection">no_internet_connection</string>
     <string name="no_connection">No connection!</string>
     <string name="please_check_your_internet_connection_and_try_again">Please check your internet connection and try again.</string>

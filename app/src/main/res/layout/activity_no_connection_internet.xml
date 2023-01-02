@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_main"
-    android:theme="@style/Theme.AppCompat.Light.NoActionBar.MainWindow"
+    android:theme="@style/Theme.AppCompat.NoActionBar.Boavizta"
     tools:context=".NoConnectionInternet">
 
 
@@ -104,10 +104,12 @@
         android:layout_width="231dp"
         android:layout_height="54dp"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="70dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/green_boavizt"
         android:text="@string/try_again"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/test_error" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

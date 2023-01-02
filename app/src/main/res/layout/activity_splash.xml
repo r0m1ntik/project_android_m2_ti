@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     tools:context=".SplashActivity"
-    android:theme="@style/Theme.AppCompat.Light.NoActionBar.Boavizta">
+    android:theme="@style/Theme.AppCompat.NoActionBar.Boavizta">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -70,7 +70,6 @@
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     <TextView
-        android:id="@+id/CustomTextLoading"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="95dp"

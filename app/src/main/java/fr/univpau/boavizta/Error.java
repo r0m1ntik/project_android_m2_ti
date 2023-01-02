@@ -1,11 +1,9 @@
 package fr.univpau.boavizta;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.widget.TextView;
 
 public class Error extends AppCompatActivity {

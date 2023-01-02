@@ -5,13 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_main"
-    android:theme="@style/Theme.AppCompat.Light.NoActionBar.MainWindow"
+    android:theme="@style/Theme.AppCompat.NoActionBar.Boavizta"
     tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="231dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/green_boavizt"
+        android:shadowColor="#0B0909"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:text="@string/calcule"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <NumberPicker
         android:id="@+id/ram_qt_capacity"
         android:layout_width="87dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_marginStart="48dp"
         android:textColorHint="#E0F2F1"
         app:layout_constraintStart_toEndOf="@+id/ram_quantite"
@@ -20,7 +38,7 @@
     <NumberPicker
         android:id="@+id/ssd_nb_capacity"
         android:layout_width="87dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_marginStart="48dp"
         android:textColorHint="#E0F2F1"
         app:layout_constraintStart_toEndOf="@+id/ssd_nb_quantite"
@@ -160,7 +178,6 @@
         android:layout_width="391dp"
         android:layout_height="18dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/d_couvrez_l_impact_environnemental_de_votre_serveur_en_quelques_clics"
@@ -169,6 +186,7 @@
         android:textColor="#00838F"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.681"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BoaviztaTextHeader" />
 
@@ -177,7 +195,7 @@
         android:layout_width="304dp"
         android:layout_height="31dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="46dp"
         android:layout_marginEnd="100dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/config_server"
@@ -202,7 +220,6 @@
         app:layout_constraintTop_toBottomOf="@+id/title_content" />
 
     <TextView
-        android:id="@+id/ram"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -215,7 +232,6 @@
         app:layout_constraintTop_toBottomOf="@+id/cpu_qt_np" />
 
     <TextView
-        android:id="@+id/ssd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -228,7 +244,6 @@
         app:layout_constraintTop_toBottomOf="@+id/ram_quantite" />
 
     <TextView
-        android:id="@+id/hdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -278,7 +293,7 @@
         android:id="@+id/cpu_qt_np"
         style="@android:style/Widget.Material.NumberPicker"
         android:layout_width="54dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_marginStart="16dp"
         android:textColorHint="#E0F2F1"
         app:layout_constraintStart_toStartOf="parent"
@@ -287,7 +302,7 @@
     <NumberPicker
         android:id="@+id/ram_quantite"
         android:layout_width="54dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_marginStart="16dp"
         android:textColorHint="#E0F2F1"
         app:layout_constraintStart_toStartOf="parent"
@@ -296,7 +311,7 @@
     <NumberPicker
         android:id="@+id/ssd_nb_quantite"
         android:layout_width="54dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_marginStart="16dp"
         android:textColorHint="#E0F2F1"
         app:layout_constraintStart_toStartOf="parent"
@@ -305,7 +320,7 @@
     <NumberPicker
         android:id="@+id/hdd_nb_quantite"
         android:layout_width="54dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_marginStart="16dp"
         android:textColorHint="#E0F2F1"
         app:layout_constraintStart_toStartOf="parent"
@@ -314,7 +329,7 @@
     <NumberPicker
         android:id="@+id/cpu_core_unit"
         android:layout_width="66dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_marginStart="50dp"
         android:textColorHint="#E0F2F1"
         app:layout_constraintStart_toEndOf="@+id/cpu_qt_np"
@@ -323,7 +338,7 @@
     <NumberPicker
         android:id="@+id/cpu_name_architecture"
         android:layout_width="156dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_marginStart="42dp"
         android:textColorHint="#E0F2F1"
         app:layout_constraintStart_toEndOf="@+id/cpu_core_unit"
@@ -332,7 +347,7 @@
     <NumberPicker
         android:id="@+id/ram_name_manufacturer"
         android:layout_width="156dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_marginStart="21dp"
         android:textColorHint="#E0F2F1"
         app:layout_constraintStart_toEndOf="@+id/ram_qt_capacity"
@@ -341,7 +356,7 @@
     <NumberPicker
         android:id="@+id/hdd_nb_capacity"
         android:layout_width="265dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_marginStart="48dp"
         android:textColorHint="#E0F2F1"
         app:layout_constraintStart_toEndOf="@+id/hdd_nb_quantite"
@@ -350,30 +365,10 @@
     <NumberPicker
         android:id="@+id/ssd_name_manufacturer"
         android:layout_width="156dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_marginStart="21dp"
         android:textColorHint="#E0F2F1"
         app:layout_constraintStart_toEndOf="@+id/ssd_nb_capacity"
         app:layout_constraintTop_toBottomOf="@+id/ssd_manufacturer" />
-
-    <ImageButton
-        android:id="@+id/calculate_btn"
-        android:layout_width="310dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#00FFFFFF"
-        android:contentDescription="@string/button_calculate"
-        android:focusableInTouchMode="false"
-        android:scaleType="center"
-        android:scaleX="0.8"
-        android:scaleY="0.8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/calculate__300___65_px___1_"
-        tools:ignore="SpeakableTextPresentCheck,RedundantDescriptionCheck,RedundantDescriptionCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

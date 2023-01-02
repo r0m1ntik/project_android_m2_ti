@@ -1,178 +1,250 @@
 package fr.univpau.boavizta;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.NumberPicker;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import java.util.ArrayList;
+import java.util.Objects;
 
 import fr.univpau.boavizta.cpu.Architecture;
 import fr.univpau.boavizta.ram.RAM_Manufacturer;
 import fr.univpau.boavizta.ssd.SSD_Manufacturer;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    // Custom functions
     private Function mFunction;
-    private Intent mIntent;
+    private Intent mIntentConnection;
     private Intent mErrorIntent;
-    // CPU
-    private NumberPicker mNumberPickerCpuNb;
-    private NumberPicker mNumberPickerCpuCoreUnit;
-    private NumberPicker mNumberPickerCpuArchitecture;
-    // RAM
-    private NumberPicker mNumberPickerRamNb;
-    private NumberPicker mNumberPickerRamCapacity;
-    private NumberPicker mNumberPickerRamManufacturer;
-    // SSD
-    private NumberPicker mNumberPickerSsdNb;
-    private NumberPicker mNumberPickerSsdCapacity;
-    private NumberPicker mNumberPickerSsdManufacturer;
-    // HDD
-    private NumberPicker mNumberPickerHddNb;
-    private NumberPicker mNumberPickerHddCapacity;
+
+    @SuppressWarnings("deprecation")
+    @SuppressLint("StaticFieldLeak")
+    private final class JsonLoader extends AsyncTask<String, Void, String> {
+
+        private static final String CpuJSON = "https://uppa.api.boavizta.org/v1/utils/cpu_family";
+        private static final String RamJSON = "https://uppa.api.boavizta.org/v1/utils/ram_manufacturer";
+        private static final String SsdJSON = "https://uppa.api.boavizta.org/v1/utils/ssd_manufacturer";
+
+        private int error = 0;
+
+        String TAG = getClass().getSimpleName();
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            HttpHandler sh = new HttpHandler();
+            String jsonStrCpu = sh.makeServiceCall(CpuJSON, "GET");
+            String jsonStrRam = sh.makeServiceCall(RamJSON, "GET");
+            String jsonStrSsd = sh.makeServiceCall(SsdJSON, "GET");
+
+            // LOG in console
+            Log.e(TAG, "Response for CPU: " + jsonStrCpu);
+            Log.e(TAG, "Response for RAM: " + jsonStrRam);
+            Log.e(TAG, "Response for SSD: " + jsonStrSsd);
+
+            // CPU INIT
+            if (jsonStrCpu != null) {
+                try {
+                    new Handler(Looper.getMainLooper()).post(() -> {
+                        JSONArray jsonArray = null;
+                        try {
+                            jsonArray = new JSONArray(jsonStrCpu);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            error++;
+                        }
+                        ArrayList<Architecture> ArchitectureArrayList = new ArrayList<>();
+                        for(int i = 0; i < Objects.requireNonNull(jsonArray).length(); i++) {
+                            try {
+                                ArchitectureArrayList.add(new Architecture(i, jsonArray.getString(i)));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                error++;
+                            }
+                        }
+                        Architecture.setArchitectureArrayList(ArchitectureArrayList);
+                    });
+                } catch (final Exception e) {
+                    error++;
+                    return TAG + "Json parsing CPU error !";
+                }
+            }
+            // RAM INIT
+            if (jsonStrRam != null) {
+                try {
+                    new Handler(Looper.getMainLooper()).post(() -> {
+                        JSONArray jsonArray = null;
+                        try {
+                            jsonArray = new JSONArray(jsonStrRam);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            error++;
+                        }
+                        ArrayList<RAM_Manufacturer> ManufacturerArrayList = new ArrayList<>();
+                        for(int i = 0; i < Objects.requireNonNull(jsonArray).length(); i++) {
+                            try {
+                                ManufacturerArrayList.add(new RAM_Manufacturer(i, jsonArray.getString(i)));
+                            } catch (JSONException e) {
+                                error++;
+                                e.printStackTrace();
+                            }
+                        }
+                        // HACK FIX TODO
+                        int y = 0;
+                        for(int i = jsonArray.length(); i < jsonArray.length() + jsonArray.length(); i++, y++) {
+                            try {
+                                ManufacturerArrayList.add(new RAM_Manufacturer(i, jsonArray.getString(y)));
+                            } catch (JSONException e) {
+                                error++;
+                                e.printStackTrace();
+                            }
+                        }
+                        RAM_Manufacturer.setManufacturerArrayList(ManufacturerArrayList);
+                    });
+                } catch (final Exception e) {
+                    error++;
+                    return TAG + e.getMessage();
+                }
+            }
+            // SSD INIT
+            if (jsonStrSsd != null) {
+                try {
+                    JSONArray jsonArray = new JSONArray(jsonStrSsd);
+                    ArrayList<SSD_Manufacturer> ManufacturerArrayList = new ArrayList<>();
+                    for(int i = 0; i < jsonArray.length(); i++) {
+                        ManufacturerArrayList.add(new SSD_Manufacturer(i, jsonArray.getString(i)));
+                    }
+                    // HACK FIX TODO
+                    int y = 0;
+                    for(int i = jsonArray.length(); i < jsonArray.length() + jsonArray.length(); i++, y++) {
+                        ManufacturerArrayList.add(new SSD_Manufacturer(i, jsonArray.getString(y)));
+                    }
+                    SSD_Manufacturer.setManufacturerArrayList(ManufacturerArrayList);
+                } catch (final Exception e) {
+                    error++;
+                    return TAG + e.getMessage();
+                }
+            }
+
+            if (jsonStrSsd == null || jsonStrCpu == null || jsonStrRam == null) {
+                error++;
+                return "CPU or SSD or RAM is empty ! Check the links used for https requests.";
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(@Nullable String result) {
+            if (error == 0) {
+                // loading data
+                mFunction.loadingData(getWindow().getDecorView());
+            } else {
+                Log.e(TAG, result);
+                mErrorIntent.putExtra("error_info", result);
+                startActivity(mErrorIntent);
+                finish();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("onCreate()");
         setContentView(R.layout.activity_main);
+        System.out.println("MainActivity::onCreate()");
+
+        // Loading custom functions
         mFunction = new Function();
+
+        // No connection to internet Intent
+        mIntentConnection = new Intent(MainActivity.this, NoConnectionInternet.class);
+        // Error http request Intent
+        mErrorIntent = new Intent(MainActivity.this, Error.class);
+
+        // Check internet connection
+        if (!mFunction.isNetworkAvailable(getApplication())) {
+            this.noConnection();
+        } else {
+            new JsonLoader().execute();
+        }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        System.out.println("onStart()");
-        mIntent = new Intent(MainActivity.this, NoConnectionInternet.class);
-        mErrorIntent = new Intent(MainActivity.this, Error.class);
-
+        System.out.println("MainActivity::onStart()");
+        // Create button for go to website boavizta
         ImageView BoaviztaButtonHeader = findViewById(R.id.BoaviztaButtonHeader);
         TextView BoaviztaTextHeader = findViewById(R.id.BoaviztaTextHeader);
-
         BoaviztaButtonHeader.setOnClickListener(this);
         BoaviztaTextHeader.setOnClickListener(this);
-
-        if (Architecture.getArchitectureArrayList().isEmpty()) {
-            mErrorIntent.putExtra("error_info", "<CPU> Couldn't get json from server.");
-            finish();
-        } else if (RAM_Manufacturer.getManufacturerArrayList().isEmpty()) {
-            mErrorIntent.putExtra("error_info", "<RAM> Couldn't get json from server.");
-            finish();
-        } else if (SSD_Manufacturer.getManufacturerArrayList().isEmpty()) {
-            mErrorIntent.putExtra("error_info", "<SSD> Couldn't get json from server.");
-            finish();
-        } else {
-            loadingData();
-        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        System.out.println("onDestroy()");
+        System.out.println("MainActivity::onDestroy()");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        System.out.println("onRestart()");
+        System.out.println("MainActivity::onRestart()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        System.out.println("onResume()");
+        System.out.println("MainActivity::onResume()");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        System.out.println("onPause()");
+        System.out.println("MainActivity::onPause()");
+    }
+
+    public void noConnection() {
+        startActivity(mIntentConnection);
+        finish();
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        if (!mFunction.isNetworkAvailable(getApplication())) {
-            startActivity(mIntent);
+        if (!mFunction.isNetworkAvailable(getApplication()) && hasFocus) {
+            startActivity(mIntentConnection);
             finish();
         } else {
             onStart();
         }
     }
 
+    // OnClick logo or name -> open web site
     @Override
     public void onClick(View v) {
-        // en cliquant sur le logo ou le nom on va ouvrir la page web de Boavizta
         if (mFunction.isNetworkAvailable(getApplication())) {
-            startActivity(mIntent);
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://boavizta.org/"));
+            startActivity(intent);
             finish();
         } else {
             startActivity(new Intent(MainActivity.this, NoConnectionInternet.class));
             finish();
         }
-    }
-
-    private void loadingData() {
-        // Initialisation par default CPU
-        mNumberPickerCpuNb = findViewById(R.id.cpu_qt_np);
-        mNumberPickerCpuNb.setMaxValue(1000);
-        mNumberPickerCpuNb.setMinValue(1);
-        mNumberPickerCpuNb.setValue(2);
-
-        mNumberPickerCpuCoreUnit = findViewById(R.id.cpu_core_unit);
-        mNumberPickerCpuCoreUnit.setMaxValue(1000);
-        mNumberPickerCpuCoreUnit.setMinValue(1);
-        mNumberPickerCpuCoreUnit.setValue(16);
-
-        mNumberPickerCpuArchitecture = findViewById(R.id.cpu_name_architecture);
-        mNumberPickerCpuArchitecture.setMinValue(0);
-        mNumberPickerCpuArchitecture.setMaxValue(Architecture.getArchitectureArrayList().size() - 1);
-        mNumberPickerCpuArchitecture.setDisplayedValues(Architecture.architectureNames());
-
-
-        // Initialisation par default RAM
-        mNumberPickerRamNb = findViewById(R.id.ram_quantite);
-        mNumberPickerRamNb.setMaxValue(1000);
-        mNumberPickerRamNb.setMinValue(1);
-        mNumberPickerRamNb.setValue(4);
-
-        mNumberPickerRamCapacity = findViewById(R.id.ram_qt_capacity);
-        mNumberPickerRamCapacity.setMaxValue(1000);
-        mNumberPickerRamCapacity.setMinValue(1);
-        mNumberPickerRamCapacity.setValue(32);
-
-        mNumberPickerRamManufacturer = findViewById(R.id.ram_name_manufacturer);
-        mNumberPickerRamManufacturer.setMinValue(0);
-        mNumberPickerRamManufacturer.setMaxValue(RAM_Manufacturer.getManufacturerArrayList().size() - 1);
-        mNumberPickerRamManufacturer.setDisplayedValues(RAM_Manufacturer.manifacturerNames());
-
-        // Initialisation par default SSD
-        mNumberPickerSsdNb = findViewById(R.id.ssd_nb_quantite);
-        mNumberPickerSsdNb.setMinValue(0);
-        mNumberPickerSsdNb.setMaxValue(1000);
-        mNumberPickerSsdNb.setValue(4);
-
-        mNumberPickerSsdCapacity = findViewById(R.id.ssd_nb_capacity);
-        mNumberPickerSsdCapacity.setMinValue(1);
-        mNumberPickerSsdCapacity.setMaxValue(100000);
-        mNumberPickerSsdCapacity.setValue(1000);
-
-        mNumberPickerSsdManufacturer = findViewById(R.id.ssd_name_manufacturer);
-        mNumberPickerSsdManufacturer.setMinValue(0);
-        mNumberPickerSsdManufacturer.setMaxValue(SSD_Manufacturer.getManufacturerArrayList().size() - 1);
-        mNumberPickerSsdManufacturer.setDisplayedValues(SSD_Manufacturer.manifacturerNames());
-
-        // Initialisation par default HDD
-        mNumberPickerHddNb = findViewById(R.id.hdd_nb_quantite);
-        mNumberPickerHddNb.setMinValue(0);
-        mNumberPickerHddNb.setMaxValue(1000);
-        mNumberPickerHddNb.setValue(2);
-
-        mNumberPickerHddCapacity = findViewById(R.id.hdd_nb_capacity);
-        mNumberPickerHddCapacity.setMinValue(0);
-        mNumberPickerHddCapacity.setMaxValue(100000);
-        mNumberPickerHddCapacity.setValue(1000);
     }
 }

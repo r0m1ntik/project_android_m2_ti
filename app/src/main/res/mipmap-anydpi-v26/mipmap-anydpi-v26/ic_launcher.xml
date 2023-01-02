@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress XmlHighlighting -->
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://schemas.android.com/apk/res/android ">
+    xsi:schemaLocation="http://schemas.android.com/apk/res/android"
+    xmlns="">
   <background android:drawable="@mipmap/ic_launcher_adaptive_back" />
   <foreground android:drawable="@mipmap/ic_launcher_adaptive_fore" />
 </adaptive-icon>
