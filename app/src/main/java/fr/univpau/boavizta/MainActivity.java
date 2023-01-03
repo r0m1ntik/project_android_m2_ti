@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -12,6 +13,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,22 +24,24 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import fr.univpau.boavizta.cpu.Architecture;
-import fr.univpau.boavizta.ram.RAM_Manufacturer;
 import fr.univpau.boavizta.ssd.SSD_Manufacturer;
+import fr.univpau.boavizta.ram.RAM_Manufacturer;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     // Custom functions
-    private Function mFunction;
+    private static Function mFunction;
     private Intent mIntentConnection;
     private Intent mErrorIntent;
 
     @SuppressWarnings("deprecation")
     @SuppressLint("StaticFieldLeak")
-    private final class JsonLoader extends AsyncTask<String, Void, String> {
+    public final class JsonLoader extends AsyncTask<String, Void, String> {
 
         private static final String CpuJSON = "https://uppa.api.boavizta.org/v1/utils/cpu_family";
         private static final String RamJSON = "https://uppa.api.boavizta.org/v1/utils/ram_manufacturer";
         private static final String SsdJSON = "https://uppa.api.boavizta.org/v1/utils/ssd_manufacturer";
+
+        Dialog mDialog;
 
         private int error = 0;
 
@@ -44,6 +49,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         protected void onPreExecute() {
+            // display a progress dialog for good user experiance
+            mDialog = new Dialog(MainActivity.this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+            mDialog.requestWindowFeature(Window.FEATURE_ACTION_BAR);
+            mDialog.setContentView(R.layout.activity_splash);
+            mDialog.setCancelable(false);
+            mDialog.show();
         }
 
         @Override
@@ -154,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (error == 0) {
                 // loading data
                 mFunction.loadingData(getWindow().getDecorView());
+                mDialog.dismiss();
             } else {
                 Log.e(TAG, result);
                 mErrorIntent.putExtra("error_info", result);
