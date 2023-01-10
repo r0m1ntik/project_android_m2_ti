@@ -17,6 +17,10 @@ public class SSD_Manufacturer {
         return ManufacturerArrayList;
     }
 
+    public static String getNameOfValue(int value) {
+        return ManufacturerArrayList.get(value).getName();
+    }
+
     public static String[] manifacturerNames() {
         String[] names = new String[ManufacturerArrayList.size()];
         for (SSD_Manufacturer m : ManufacturerArrayList) {

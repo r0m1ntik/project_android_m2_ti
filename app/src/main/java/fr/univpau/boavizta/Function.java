@@ -6,7 +6,6 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.view.View;
-import android.widget.NumberPicker;
 
 import fr.univpau.boavizta.cpu.Architecture;
 import fr.univpau.boavizta.ram.RAM_Manufacturer;
@@ -23,69 +22,65 @@ public class Function {
         return actNw != null && (actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) || actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) || actNw.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH));
     }
     // loading data
-    public void loadingData(View v) {
-        // Initialisation par default CPU
+    public void loadingData(View v, Application application)
+    {
         // CPU
-        NumberPicker numberPickerCpuNb = v.findViewById(R.id.cpu_qt_np);
-        numberPickerCpuNb.setMaxValue(1000);
-        numberPickerCpuNb.setMinValue(1);
-        numberPickerCpuNb.setValue(2);
+        ((App) application).setNumberPickerCpuNb(v.findViewById(R.id.cpu_qt_np));
+        ((App) application).getNumberPickerCpuNb().setMaxValue(1000);
+        ((App) application).getNumberPickerCpuNb().setMinValue(1);
+        ((App) application).getNumberPickerCpuNb().setValue(2);
 
-        NumberPicker numberPickerCpuCoreUnit = v.findViewById(R.id.cpu_core_unit);
-        numberPickerCpuCoreUnit.setMaxValue(1000);
-        numberPickerCpuCoreUnit.setMinValue(1);
-        numberPickerCpuCoreUnit.setValue(16);
+        ((App) application).setNumberPickerCpuCoreUnit(v.findViewById(R.id.cpu_core_unit));
+        ((App) application).getNumberPickerCpuCoreUnit().setMaxValue(1000);
+        ((App) application).getNumberPickerCpuCoreUnit().setMinValue(1);
+        ((App) application).getNumberPickerCpuCoreUnit().setValue(16);
 
-        NumberPicker numberPickerCpuArchitecture = v.findViewById(R.id.cpu_name_architecture);
-        numberPickerCpuArchitecture.setMinValue(0);
-        numberPickerCpuArchitecture.setMaxValue(Architecture.getArchitectureArrayList().size() - 1);
-        numberPickerCpuArchitecture.setDisplayedValues(Architecture.architectureNames());
+        ((App) application).setNumberPickerCpuArchitecture(v.findViewById(R.id.cpu_name_architecture));
+        ((App) application).getNumberPickerCpuArchitecture().setMinValue(0);
+        ((App) application).getNumberPickerCpuArchitecture().setMaxValue(Architecture.getArchitectureArrayList().size() - 1);
+        ((App) application).getNumberPickerCpuArchitecture().setDisplayedValues(Architecture.architectureNames());
 
-
-        // Initialisation par default RAM
         // RAM
-        NumberPicker numberPickerRamNb = v.findViewById(R.id.ram_quantite);
-        numberPickerRamNb.setMaxValue(1000);
-        numberPickerRamNb.setMinValue(1);
-        numberPickerRamNb.setValue(4);
+        ((App) application).setNumberPickerRamNb(v.findViewById(R.id.ram_quantite));
+        ((App) application).getNumberPickerRamNb().setMaxValue(1000);
+        ((App) application).getNumberPickerRamNb().setMinValue(1);
+        ((App) application).getNumberPickerRamNb().setValue(4);
 
-        NumberPicker numberPickerRamCapacity = v.findViewById(R.id.ram_qt_capacity);
-        numberPickerRamCapacity.setMaxValue(1000);
-        numberPickerRamCapacity.setMinValue(1);
-        numberPickerRamCapacity.setValue(32);
+        ((App) application).setNumberPickerRamCapacity(v.findViewById(R.id.ram_qt_capacity));
+        ((App) application).getNumberPickerRamCapacity().setMaxValue(1000);
+        ((App) application).getNumberPickerRamCapacity().setMinValue(1);
+        ((App) application).getNumberPickerRamCapacity().setValue(32);
 
-        NumberPicker numberPickerRamManufacturer = v.findViewById(R.id.ram_name_manufacturer);
-        numberPickerRamManufacturer.setMinValue(0);
-        numberPickerRamManufacturer.setMaxValue(RAM_Manufacturer.getManufacturerArrayList().size() - 1);
-        numberPickerRamManufacturer.setDisplayedValues(RAM_Manufacturer.manifacturerNames());
+        ((App) application).setNumberPickerRamManufacturer(v.findViewById(R.id.ram_name_manufacturer));
+        ((App) application).getNumberPickerRamManufacturer().setMinValue(0);
+        ((App) application).getNumberPickerRamManufacturer().setMaxValue(RAM_Manufacturer.getManufacturerArrayList().size() - 1);
+        ((App) application).getNumberPickerRamManufacturer().setDisplayedValues(RAM_Manufacturer.manifacturerNames());
 
-        // Initialisation par default SSD
         // SSD
-        NumberPicker numberPickerSsdNb = v.findViewById(R.id.ssd_nb_quantite);
-        numberPickerSsdNb.setMinValue(0);
-        numberPickerSsdNb.setMaxValue(1000);
-        numberPickerSsdNb.setValue(4);
+        ((App) application).setNumberPickerSsdNb(v.findViewById(R.id.ssd_nb_quantite));
+        ((App) application).getNumberPickerSsdNb().setMinValue(0);
+        ((App) application).getNumberPickerSsdNb().setMaxValue(1000);
+        ((App) application).getNumberPickerSsdNb().setValue(4);
 
-        NumberPicker numberPickerSsdCapacity = v.findViewById(R.id.ssd_nb_capacity);
-        numberPickerSsdCapacity.setMinValue(1);
-        numberPickerSsdCapacity.setMaxValue(100000);
-        numberPickerSsdCapacity.setValue(1000);
+        ((App) application).setNumberPickerSsdCapacity(v.findViewById(R.id.ssd_nb_capacity));
+        ((App) application).getNumberPickerSsdCapacity().setMinValue(1);
+        ((App) application).getNumberPickerSsdCapacity().setMaxValue(100000);
+        ((App) application).getNumberPickerSsdCapacity().setValue(1000);
 
-        NumberPicker numberPickerSsdManufacturer = v.findViewById(R.id.ssd_name_manufacturer);
-        numberPickerSsdManufacturer.setMinValue(0);
-        numberPickerSsdManufacturer.setMaxValue(SSD_Manufacturer.getManufacturerArrayList().size() - 1);
-        numberPickerSsdManufacturer.setDisplayedValues(SSD_Manufacturer.manifacturerNames());
+        ((App) application).setNumberPickerSsdManufacturer(v.findViewById(R.id.ssd_name_manufacturer));
+        ((App) application).getNumberPickerSsdManufacturer().setMinValue(0);
+        ((App) application).getNumberPickerSsdManufacturer().setMaxValue(SSD_Manufacturer.getManufacturerArrayList().size() - 1);
+        ((App) application).getNumberPickerSsdManufacturer().setDisplayedValues(SSD_Manufacturer.manifacturerNames());
 
-        // Initialisation par default HDD
         // HDD
-        NumberPicker numberPickerHddNb = v.findViewById(R.id.hdd_nb_quantite);
-        numberPickerHddNb.setMinValue(0);
-        numberPickerHddNb.setMaxValue(1000);
-        numberPickerHddNb.setValue(2);
+        ((App) application).setNumberPickerHddNb(v.findViewById(R.id.hdd_nb_quantite));
+        ((App) application).getNumberPickerHddNb().setMinValue(0);
+        ((App) application).getNumberPickerHddNb().setMaxValue(1000);
+        ((App) application).getNumberPickerHddNb().setValue(2);
 
-        NumberPicker numberPickerHddCapacity = v.findViewById(R.id.hdd_nb_capacity);
-        numberPickerHddCapacity.setMinValue(0);
-        numberPickerHddCapacity.setMaxValue(100000);
-        numberPickerHddCapacity.setValue(1000);
+        ((App) application).setNumberPickerHddCapacity(v.findViewById(R.id.hdd_nb_capacity));
+        ((App) application).getNumberPickerHddCapacity().setMinValue(0);
+        ((App) application).getNumberPickerHddCapacity().setMaxValue(100000);
+        ((App) application).getNumberPickerHddCapacity().setValue(1000);
     }
 }

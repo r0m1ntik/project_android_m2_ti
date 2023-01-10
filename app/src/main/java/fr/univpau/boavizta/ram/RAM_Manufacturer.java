@@ -24,6 +24,10 @@ public class RAM_Manufacturer {
         return names;
     }
 
+    public static String getNameOfValue(int value) {
+        return ManufacturerArrayList.get(value).getName();
+    }
+
     public static void setManufacturerArrayList(ArrayList<RAM_Manufacturer> manufacturerArrayList) {
         ManufacturerArrayList = manufacturerArrayList;
     }

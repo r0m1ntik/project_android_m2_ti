@@ -22,6 +22,10 @@
     <string name="please_check_your_internet_connection_and_try_again">Please check your internet connection and try again.</string>
     <string name="try_again">Try again</string>
     <string name="couldn_t_get_json_from_server">Couldn\'t get json from server.</string>
-    <string name="error">Error</string>
+    <string name="error">ERROR !</string>
     <string name="error_img">error_img</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

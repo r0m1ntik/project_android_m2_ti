@@ -9,12 +9,13 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/btn_calculate"
         android:layout_width="231dp"
         android:layout_height="54dp"
         android:layout_marginStart="70dp"
         android:layout_marginEnd="70dp"
         android:layout_marginBottom="16dp"
-        android:background="@color/green_boavizt"
+        android:background="@drawable/custom_btn"
         android:shadowColor="#0B0909"
         android:shadowDx="10"
         android:shadowDy="10"
@@ -145,48 +146,51 @@
 
     <ImageView
         android:id="@+id/BoaviztaButtonHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="49dp"
+        android:layout_height="43dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="3dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/image_du_haut"
         android:foregroundTint="#00FFFFFF"
+        android:scaleType="center"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher" />
+        app:srcCompat="@drawable/ic_launcher_adaptive_fore" />
 
     <TextView
         android:id="@+id/BoaviztaTextHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="144dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:clickable="true"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif-condensed-medium"
         android:minHeight="48dp"
         android:text="@string/boavizta"
         android:textColor="@color/greenDark_boavizt"
         android:textColorHighlight="@color/greenDark_boavizt"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/BoaviztaButtonHeader"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/BoaviztaSousTextHeader"
         style="@android:style/Widget.Holo.TextView"
-        android:layout_width="391dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="384dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-16dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/d_couvrez_l_impact_environnemental_de_votre_serveur_en_quelques_clics"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="#00838F"
-        android:textSize="14sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BoaviztaTextHeader" />
 

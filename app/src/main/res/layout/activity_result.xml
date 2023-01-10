@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_main"
     android:theme="@style/Theme.AppCompat.NoActionBar.Boavizta"
-    tools:context=".Error">
+    tools:context=".result.ResultJson">
 
 
     <ImageView
@@ -59,64 +59,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BoaviztaTextHeader" />
 
-    <TextView
-        android:id="@+id/error"
-        android:layout_width="300dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="133dp"
-        android:layout_marginTop="-20dp"
-        android:layout_marginEnd="133dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="@string/error"
-        android:textAlignment="center"
-        android:textColor="#FFFDFD"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <TextView
-        android:id="@+id/test_error"
-        android:layout_width="410dp"
-        android:layout_height="83dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="@string/couldn_t_get_json_from_server"
-        android:textAlignment="center"
-        android:textColor="#E0F2F1"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/error" />
-
-    <Button
-        android:id="@+id/btn_try_again"
-        android:layout_width="231dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/custom_btn"
-        android:text="@string/try_again"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TextContrastCheck" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="190dp"
-        android:layout_height="197dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="204dp"
-        android:layout_marginEnd="111dp"
-        android:contentDescription="@string/error_img"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BoaviztaSousTextHeader"
-        app:srcCompat="@drawable/error"
-        tools:ignore="ImageContrastCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

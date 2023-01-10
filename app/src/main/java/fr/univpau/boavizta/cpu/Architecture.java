@@ -18,6 +18,10 @@ public class Architecture extends AppCompatActivity {
         return ArchitectureArrayList;
     }
 
+    public static String getNameOfValue(int value) {
+        return ArchitectureArrayList.get(value).getName();
+    }
+
     public static String[] architectureNames() {
         String[] names = new String[ArchitectureArrayList.size()];
         for (Architecture a : ArchitectureArrayList) {

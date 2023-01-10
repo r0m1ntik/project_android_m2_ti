@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import fr.univpau.boavizta.cpu.Architecture;
+import fr.univpau.boavizta.result.ResultJson;
 import fr.univpau.boavizta.ssd.SSD_Manufacturer;
 import fr.univpau.boavizta.ram.RAM_Manufacturer;
 
@@ -42,13 +45,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Dialog mDialog;
 
-        private int error = 0;
-
         String TAG = getClass().getSimpleName();
 
         @Override
         protected void onPreExecute() {
-            // display a progress dialog for good user experiance
+            // display a progress dialog for good user experience
             mDialog = new Dialog(MainActivity.this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
             mDialog.requestWindowFeature(Window.FEATURE_ACTION_BAR);
             mDialog.setContentView(R.layout.activity_splash);
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         protected String doInBackground(String... strings) {
             HttpHandler sh = new HttpHandler();
+            final String[] response = {""};
             String jsonStrCpu = sh.makeServiceCall(CpuJSON, "GET");
             String jsonStrRam = sh.makeServiceCall(RamJSON, "GET");
             String jsonStrSsd = sh.makeServiceCall(SsdJSON, "GET");
@@ -76,25 +78,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         try {
                             jsonArray = new JSONArray(jsonStrCpu);
                         } catch (JSONException e) {
+                            response[0] = e.getMessage();
                             e.printStackTrace();
-                            error++;
                         }
                         ArrayList<Architecture> ArchitectureArrayList = new ArrayList<>();
                         for(int i = 0; i < Objects.requireNonNull(jsonArray).length(); i++) {
                             try {
                                 ArchitectureArrayList.add(new Architecture(i, jsonArray.getString(i)));
                             } catch (JSONException e) {
+                                response[0] = e.getMessage();
                                 e.printStackTrace();
-                                error++;
                             }
                         }
                         Architecture.setArchitectureArrayList(ArchitectureArrayList);
                     });
                 } catch (final Exception e) {
-                    error++;
-                    return TAG + "Json parsing CPU error !";
+                    return "Json parsing CPU error !";
                 }
             }
+
             // RAM INIT
             if (jsonStrRam != null) {
                 try {
@@ -103,15 +105,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         try {
                             jsonArray = new JSONArray(jsonStrRam);
                         } catch (JSONException e) {
+                            response[0] = e.getMessage();
                             e.printStackTrace();
-                            error++;
                         }
                         ArrayList<RAM_Manufacturer> ManufacturerArrayList = new ArrayList<>();
                         for(int i = 0; i < Objects.requireNonNull(jsonArray).length(); i++) {
                             try {
                                 ManufacturerArrayList.add(new RAM_Manufacturer(i, jsonArray.getString(i)));
                             } catch (JSONException e) {
-                                error++;
+                                response[0] = e.getMessage();
                                 e.printStackTrace();
                             }
                         }
@@ -121,52 +123,57 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             try {
                                 ManufacturerArrayList.add(new RAM_Manufacturer(i, jsonArray.getString(y)));
                             } catch (JSONException e) {
-                                error++;
+                                response[0] = e.getMessage();
                                 e.printStackTrace();
                             }
                         }
                         RAM_Manufacturer.setManufacturerArrayList(ManufacturerArrayList);
                     });
                 } catch (final Exception e) {
-                    error++;
-                    return TAG + e.getMessage();
+                    return e.getMessage();
                 }
             }
+
             // SSD INIT
             if (jsonStrSsd != null) {
                 try {
                     JSONArray jsonArray = new JSONArray(jsonStrSsd);
-                    ArrayList<SSD_Manufacturer> ManufacturerArrayList = new ArrayList<>();
+                    ArrayList<SSD_Manufacturer> ManufacturerArrayListSSD = new ArrayList<>();
                     for(int i = 0; i < jsonArray.length(); i++) {
-                        ManufacturerArrayList.add(new SSD_Manufacturer(i, jsonArray.getString(i)));
+                        ManufacturerArrayListSSD.add(new SSD_Manufacturer(i, jsonArray.getString(i)));
                     }
                     // HACK FIX TODO
                     int y = 0;
                     for(int i = jsonArray.length(); i < jsonArray.length() + jsonArray.length(); i++, y++) {
-                        ManufacturerArrayList.add(new SSD_Manufacturer(i, jsonArray.getString(y)));
+                        ManufacturerArrayListSSD.add(new SSD_Manufacturer(i, jsonArray.getString(y)));
                     }
-                    SSD_Manufacturer.setManufacturerArrayList(ManufacturerArrayList);
+                    SSD_Manufacturer.setManufacturerArrayList(ManufacturerArrayListSSD);
                 } catch (final Exception e) {
-                    error++;
-                    return TAG + e.getMessage();
+                    return e.getMessage();
                 }
             }
 
-            if (jsonStrSsd == null || jsonStrCpu == null || jsonStrRam == null) {
-                error++;
-                return "CPU or SSD or RAM is empty ! Check the links used for https requests.";
+            if (!response[0].equals("")) {
+                return response[0];
+            } else {
+                if (jsonStrCpu == null) {
+                    return "No results for CPU !\nPlease check server availability.";
+                } else if (jsonStrRam == null) {
+                    return "No results for RAM !\nPlease check server availability.";
+                } else if (jsonStrSsd == null) {
+                    return "No results for SSD !\nPlease check server availability.";
+                } else {
+                    return null;
+                }
             }
-            return null;
         }
 
         @Override
         protected void onPostExecute(@Nullable String result) {
-            if (error == 0) {
-                // loading data
-                mFunction.loadingData(getWindow().getDecorView());
+            if (result == null) {
+                mFunction.loadingData(getWindow().getDecorView(), getApplication());
                 mDialog.dismiss();
             } else {
-                Log.e(TAG, result);
                 mErrorIntent.putExtra("error_info", result);
                 startActivity(mErrorIntent);
                 finish();
@@ -188,6 +195,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Error http request Intent
         mErrorIntent = new Intent(MainActivity.this, Error.class);
 
+
+
         // Check internet connection
         if (!mFunction.isNetworkAvailable(getApplication())) {
             this.noConnection();
@@ -203,8 +212,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Create button for go to website boavizta
         ImageView BoaviztaButtonHeader = findViewById(R.id.BoaviztaButtonHeader);
         TextView BoaviztaTextHeader = findViewById(R.id.BoaviztaTextHeader);
-        BoaviztaButtonHeader.setOnClickListener(this);
-        BoaviztaTextHeader.setOnClickListener(this);
+        BoaviztaButtonHeader.setOnClickListener(this::WebSite);
+        BoaviztaTextHeader.setOnClickListener(this::WebSite);
+
+        Button mButtonCalculate = findViewById(R.id.btn_calculate);
+        mButtonCalculate.setOnClickListener(this);
     }
 
     @Override
@@ -247,15 +259,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     // OnClick logo or name -> open web site
-    @Override
-    public void onClick(View v) {
+    public void WebSite(View v) {
         if (mFunction.isNetworkAvailable(getApplication())) {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://boavizta.org/"));
-            startActivity(intent);
+            ActivityOptions options = ActivityOptions.makeScaleUpAnimation(v, 0, 0, v.getWidth(), v.getHeight());
+            startActivity(intent, options.toBundle());
             finish();
         } else {
             startActivity(new Intent(MainActivity.this, NoConnectionInternet.class));
             finish();
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (mFunction.isNetworkAvailable(getApplication())) {
+            Intent intent = new Intent(MainActivity.this, ResultJson.class);
+            ActivityOptions options = ActivityOptions.makeScaleUpAnimation(v, 0, 0, v.getWidth(), v.getHeight());
+            startActivity(intent, options.toBundle());
+        } else {
+            startActivity(new Intent(MainActivity.this, NoConnectionInternet.class));
         }
     }
 }

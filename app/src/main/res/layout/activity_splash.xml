@@ -38,12 +38,12 @@
 
     <TextView
         android:id="@+id/BoaviztaTextHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
+        android:layout_width="162dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="124dp"
         android:layout_marginTop="-32dp"
         android:clickable="true"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif-condensed-medium"
         android:minHeight="48dp"
         android:text="@string/boavizta"
         android:textColor="@color/greenDark_boavizt"
