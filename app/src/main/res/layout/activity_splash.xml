@@ -5,83 +5,91 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".SplashActivity"
-    android:theme="@style/Theme.AppCompat.NoActionBar.Boavizta">
+    android:scrollbarSize="16dp"
+    android:theme="@style/Theme.AppCompat.NoActionBar.Boavizta"
+    tools:context=".SplashActivity">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="@android:style/Widget.Material.ProgressBar.Small.Title"
-        android:layout_width="220dp"
-        android:layout_height="132dp"
-        android:layout_marginStart="95dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginBottom="96dp"
-        android:indeterminate="false"
-        android:progressDrawable="@drawable/ic_launcher_adaptive_back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="136dp"
-        android:layout_height="141dp"
-        android:layout_marginStart="138dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="138dp"
+    <LinearLayout
+        android:layout_width="411dp"
+        android:layout_height="626dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_adaptive_fore"
-        android:contentDescription="@string/Logo" />
+        tools:ignore="UseCompoundDrawables">
 
-    <TextView
-        android:id="@+id/BoaviztaTextHeader"
-        android:layout_width="162dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="-32dp"
-        android:clickable="true"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:minHeight="48dp"
-        android:text="@string/boavizta"
-        android:textColor="@color/greenDark_boavizt"
-        android:textColorHighlight="@color/greenDark_boavizt"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="136dp"
+            android:layout_height="141dp"
+            android:layout_marginStart="138dp"
+            android:layout_marginTop="164dp"
+            android:layout_marginEnd="138dp"
+            android:contentDescription="@string/Logo"
+            app:srcCompat="@drawable/ic_launcher_adaptive_fore" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="220dp"
+        <TextView
+            android:id="@+id/BoaviztaTextHeader"
+            android:layout_width="162dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="124dp"
+            android:clickable="true"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:minHeight="48dp"
+            android:text="@string/boavizta"
+            android:textColor="@color/greenDark_boavizt"
+            android:textColorHighlight="@color/greenDark_boavizt"
+            android:textSize="34sp"
+            tools:ignore="TextSizeCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="95dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="95dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/chargement_en_cours"
-        android:textAlignment="center"
-        android:textColor="#F4F4F4"
-        android:textSize="16sp"
+        android:layout_marginBottom="24dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="95dp"
-        android:layout_marginEnd="95dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/please_wait"
-        android:textAlignment="center"
-        android:textColor="#F4F4F4"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.Material.ProgressBar.Small.Title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="2"
+            android:indeterminate="false"
+            android:progressDrawable="@drawable/ic_launcher_adaptive_back"
+            android:scrollbarSize="24dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="0dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/chargement_en_cours"
+            android:textAlignment="center"
+            android:textColor="#F4F4F4"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/please_wait"
+            android:textAlignment="center"
+            android:textColor="#F4F4F4"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

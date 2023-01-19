@@ -18,7 +18,7 @@ public class NoConnectionInternet extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_no_connection_internet);
         mFunction = new Function();
         mIntent = new Intent(NoConnectionInternet.this, MainActivity.class);
-        Button button = findViewById(R.id.btn_try_again);
+        Button button = findViewById(R.id.btn_calculate);
         button.setOnClickListener(this);
     }
 

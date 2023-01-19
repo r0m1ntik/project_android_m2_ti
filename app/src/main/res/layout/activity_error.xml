@@ -9,114 +9,138 @@
     tools:context=".Error">
 
 
-    <ImageView
-        android:id="@+id/BoaviztaButtonHeader"
-        android:layout_width="49dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="3dp"
-        android:background="#00FFFFFF"
-        android:contentDescription="@string/image_du_haut"
-        android:foregroundTint="#00FFFFFF"
-        android:scaleType="center"
-        android:scaleX="0.6"
-        android:scaleY="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_adaptive_fore" />
-
-    <TextView
-        android:id="@+id/BoaviztaTextHeader"
-        android:layout_width="144dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:minHeight="48dp"
-        android:text="@string/boavizta"
-        android:textColor="@color/greenDark_boavizt"
-        android:textColorHighlight="@color/greenDark_boavizt"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/BoaviztaButtonHeader"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/BoaviztaSousTextHeader"
-        style="@android:style/Widget.Holo.TextView"
-        android:layout_width="384dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="-16dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/d_couvrez_l_impact_environnemental_de_votre_serveur_en_quelques_clics"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textColor="#00838F"
-        android:textSize="12sp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BoaviztaTextHeader" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/error"
-        android:layout_width="300dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="133dp"
-        android:layout_marginTop="-20dp"
-        android:layout_marginEnd="133dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="@string/error"
-        android:textAlignment="center"
-        android:textColor="#FFFDFD"
-        android:textSize="30sp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/BoaviztaButtonHeader"
+                android:layout_width="49dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="3dp"
+                android:background="#00FFFFFF"
+                android:contentDescription="@string/image_du_haut"
+                android:foregroundTint="#00FFFFFF"
+                android:scaleType="center"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                app:srcCompat="@drawable/ic_launcher_adaptive_fore" />
+
+            <TextView
+                android:id="@+id/BoaviztaTextHeader"
+                android:layout_width="322dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:minHeight="48dp"
+                android:text="@string/boavizta"
+                android:textColor="@color/greenDark_boavizt"
+                android:textColorHighlight="@color/greenDark_boavizt"
+                android:textSize="24sp"
+                tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/BoaviztaSousTextHeader"
+            style="@android:style/Widget.Holo.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/d_couvrez_l_impact_environnemental_de_votre_serveur_en_quelques_clics"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textColor="#00838F"
+            android:textSize="14sp"
+            tools:ignore="TextSizeCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="415dp"
+        android:layout_height="640dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:ignore="VisualLintBounds">
 
-    <TextView
-        android:id="@+id/test_error"
-        android:layout_width="410dp"
-        android:layout_height="83dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="@string/couldn_t_get_json_from_server"
-        android:textAlignment="center"
-        android:textColor="#E0F2F1"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/error" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:contentDescription="@string/error_img"
+            app:srcCompat="@drawable/error"
+            tools:ignore="ImageContrastCheck" />
 
-    <Button
-        android:id="@+id/btn_try_again"
-        android:layout_width="231dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/custom_btn"
-        android:text="@string/try_again"
-        android:textAlignment="center"
-        android:textSize="16sp"
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="133dp"
+            android:layout_marginEnd="133dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/error"
+            android:textAlignment="center"
+            android:textColor="#FFFDFD"
+            android:textSize="30sp"
+            tools:ignore="TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/test_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="130dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/couldn_t_get_json_from_server"
+            android:textAlignment="center"
+            android:textColor="#E0F2F1"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TextContrastCheck" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="190dp"
-        android:layout_height="197dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="204dp"
-        android:layout_marginEnd="111dp"
-        android:contentDescription="@string/error_img"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BoaviztaSousTextHeader"
-        app:srcCompat="@drawable/error"
-        tools:ignore="ImageContrastCheck" />
+        <Button
+            android:id="@+id/btn_calculate"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_btn"
+            android:text="@string/try_again"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="TextContrastCheck,TextSizeCheck,VisualLintButtonSize"
+            tools:layout_editor_absoluteX="32dp" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,4 +28,17 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="textview">loading…</string>
+    <string name="chart1_txt_view">loading…</string>
+    <string name="chart1_txt_view2">loading…</string>
+    <string name="multicritera_impacts_during_lifespan">Multicritera impacts during lifespan</string>
+    <string name="global_warming_potential_kgco2eq_total_3153_8">Global Warming Potential (kgCO2eq) - Total :</string>
+    <string name="evaluates_the_effect_on_global_warming">Evaluates the effect on global warming</string>
+    <string name="usage">Usage:</string>
+    <string name="manufacturing">Manufacturing:</string>
+    <string name="todo">TODO</string>
+    <string name="primary_energy_mj_total_82561">Primary energy (MJ) - Total :</string>
+    <string name="consumption_of_energy_resources">Consumption of energy resources</string>
+    <string name="abiotic_depletion_potential_kgsbeq_total_0_141528">Abiotic Depletion Potential (kgSbeq) - Total :</string>
+    <string name="evaluates_the_use_of_minerals_and_fossil_ressources">Evaluates the use of minerals and fossil ressources</string>
 </resources>

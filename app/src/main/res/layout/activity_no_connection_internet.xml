@@ -9,111 +9,138 @@
     tools:context=".NoConnectionInternet">
 
 
-    <ImageView
-        android:id="@+id/BoaviztaButtonHeader"
-        android:layout_width="49dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="3dp"
-        android:background="#00FFFFFF"
-        android:contentDescription="@string/image_du_haut"
-        android:foregroundTint="#00FFFFFF"
-        android:scaleType="center"
-        android:scaleX="0.6"
-        android:scaleY="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_adaptive_fore" />
-
-    <TextView
-        android:id="@+id/BoaviztaTextHeader"
-        android:layout_width="144dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:minHeight="48dp"
-        android:text="@string/boavizta"
-        android:textColor="@color/greenDark_boavizt"
-        android:textColorHighlight="@color/greenDark_boavizt"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/BoaviztaButtonHeader"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/BoaviztaSousTextHeader"
-        style="@android:style/Widget.Holo.TextView"
-        android:layout_width="384dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="-16dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/d_couvrez_l_impact_environnemental_de_votre_serveur_en_quelques_clics"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textColor="#00838F"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BoaviztaTextHeader" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="301dp"
-        android:layout_height="399dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="55dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BoaviztaSousTextHeader"
-        app:srcCompat="@drawable/no_internet"
-        android:contentDescription="@string/no_internet_connection" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-    <TextView
-        android:id="@+id/error"
-        android:layout_width="300dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="133dp"
-        android:layout_marginTop="-40dp"
-        android:layout_marginEnd="133dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="@string/no_connection"
-        android:textAlignment="center"
-        android:textColor="#E0F2F1"
-        android:textSize="30sp"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="0dp"
+            android:contentDescription="@string/no_internet_connection"
+            app:srcCompat="@drawable/no_internet" />
+
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="0dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/no_connection"
+            android:textAlignment="center"
+            android:textColor="#E0F2F1"
+            android:textSize="30sp"
+            tools:ignore="TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/test_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/please_check_your_internet_connection_and_try_again"
+            android:textAlignment="center"
+            android:textColor="#E0F2F1"
+            android:textSize="16sp"
+            tools:ignore="TextSizeCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/test_error"
-        android:layout_width="406dp"
-        android:layout_height="26dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="@string/please_check_your_internet_connection_and_try_again"
-        android:textAlignment="center"
-        android:textColor="#E0F2F1"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_try_again"
-        android:layout_width="231dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/custom_btn"
-        android:text="@string/try_again"
-        android:textSize="16sp"
+            <ImageView
+                android:id="@+id/BoaviztaButtonHeader"
+                android:layout_width="49dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="3dp"
+                android:background="#00FFFFFF"
+                android:contentDescription="@string/image_du_haut"
+                android:foregroundTint="#00FFFFFF"
+                android:scaleType="center"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                app:srcCompat="@drawable/ic_launcher_adaptive_fore" />
+
+            <TextView
+                android:id="@+id/BoaviztaTextHeader"
+                android:layout_width="322dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:minHeight="48dp"
+                android:text="@string/boavizta"
+                android:textColor="@color/greenDark_boavizt"
+                android:textColorHighlight="@color/greenDark_boavizt"
+                android:textSize="24sp"
+                tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/BoaviztaSousTextHeader"
+            style="@android:style/Widget.Holo.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/d_couvrez_l_impact_environnemental_de_votre_serveur_en_quelques_clics"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textColor="#00838F"
+            android:textSize="14sp"
+            tools:ignore="TextSizeCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TextContrastCheck" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_calculate"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_btn"
+            android:text="@string/try_again"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="TextContrastCheck,TextSizeCheck,VisualLintButtonSize"
+            tools:layout_editor_absoluteX="32dp" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

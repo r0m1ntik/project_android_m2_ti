@@ -15,7 +15,7 @@ public class Error extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_error);
 
-        Button mButton = findViewById(R.id.btn_try_again);
+        Button mButton = findViewById(R.id.btn_calculate);
         mButton.setOnClickListener(this);
     }
 

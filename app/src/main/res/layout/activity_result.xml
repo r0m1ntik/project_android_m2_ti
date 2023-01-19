@@ -8,6 +8,83 @@
     android:theme="@style/Theme.AppCompat.NoActionBar.Boavizta"
     tools:context=".result.ResultJson">
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/use"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:srcCompat="@drawable/use"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="323dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-8dp"
+        android:text="@string/consumption_of_energy_resources"
+        android:textColor="#E0F2F1"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PE"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="323dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-8dp"
+        android:text="@string/evaluates_the_use_of_minerals_and_fossil_ressources"
+        android:textColor="#E0F2F1"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PE2"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/chart3_txt"
+        android:layout_width="180dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="-24dp"
+        android:layout_marginEnd="110dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/chart1_txt_view"
+        android:textAlignment="center"
+        android:textColor="#E0F2F1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chart1"
+        tools:ignore="TextSizeCheck,VisualLintOverlap" />
+
+    <TextView
+        android:id="@+id/chart2_txt"
+        android:layout_width="180dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/chart1_txt_view2"
+        android:textAlignment="center"
+        android:textColor="#E0F2F1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BoaviztaSousTextHeader"
+        tools:ignore="TextSizeCheck" />
 
     <ImageView
         android:id="@+id/BoaviztaButtonHeader"
@@ -38,16 +115,16 @@
         android:textColorHighlight="@color/greenDark_boavizt"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/BoaviztaButtonHeader"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
 
     <TextView
         android:id="@+id/BoaviztaSousTextHeader"
         style="@android:style/Widget.Holo.TextView"
-        android:layout_width="384dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="406dp"
+        android:layout_height="21dp"
         android:layout_marginTop="-16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/d_couvrez_l_impact_environnemental_de_votre_serveur_en_quelques_clics"
         android:textAlignment="center"
@@ -57,6 +134,343 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BoaviztaTextHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/BoaviztaTextHeader"
+        tools:ignore="TextSizeCheck" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/chart1"
+        android:layout_width="200dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chart1_txt" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/chart2"
+        android:layout_width="200dp"
+        android:layout_height="160dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chart2_txt" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/chart3"
+        android:layout_width="200dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginEnd="110dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chart3_txt" />
+
+    <TextView
+        android:id="@+id/chart1_txt"
+        android:layout_width="180dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/textview"
+        android:textAlignment="center"
+        android:textColor="#E0F2F1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BoaviztaSousTextHeader"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/GWP"
+        android:layout_width="289dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/global_warming_potential_kgco2eq_total_3153_8"
+        android:textColor="#E0F2F1"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chart3"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/PE"
+        android:layout_width="186dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/primary_energy_mj_total_82561"
+        android:textColor="#E0F2F1"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/PE2"
+        android:layout_width="284dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/abiotic_depletion_potential_kgsbeq_total_0_141528"
+        android:textColor="#E0F2F1"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="260dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-8dp"
+        android:text="@string/evaluates_the_effect_on_global_warming"
+        android:textColor="#E0F2F1"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GWP"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/usage"
+        android:textAlignment="gravity"
+        android:textColor="#E0F2F1"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/usage"
+        android:textAlignment="gravity"
+        android:textColor="#E0F2F1"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/usage"
+        android:textAlignment="gravity"
+        android:textColor="#E0F2F1"
+        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/gwp_usage"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/chart1_txt_view"
+        android:textColor="#E0F2F1"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/mj_usage"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/chart1_txt_view"
+        android:textColor="#E0F2F1"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/adp_usage"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/chart1_txt_view"
+        android:textColor="#E0F2F1"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/gwp_manufacturing"
+        android:layout_width="57dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/chart1_txt_view"
+        android:textColor="#E0F2F1"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/mj_manufacturing"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/chart1_txt_view"
+        android:textColor="#E0F2F1"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/adp_manufacturing"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/chart1_txt_view"
+        android:textColor="#E0F2F1"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/manufacturing"
+        android:textColor="#E0F2F1"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/manufacturing"
+        android:textColor="#E0F2F1"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/manufacturing"
+        android:textColor="#E0F2F1"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:ignore="TextSizeCheck" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:srcCompat="@drawable/use"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="18dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintStart_toEndOf="@+id/gwp_usage"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:srcCompat="@drawable/manufacturing"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="20dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintStart_toEndOf="@+id/gwp_usage"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/manufacturing"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="18dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintStart_toEndOf="@+id/gwp_usage"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:srcCompat="@drawable/manufacturing"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/kgSbeqTotal"
+        android:layout_width="88dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/textview"
+        android:textColor="#E0F2F1"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/PE2"
+        app:layout_constraintTop_toBottomOf="@+id/mj_manufacturing"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/MJTotal"
+        android:layout_width="96dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/textview"
+        android:textColor="#E0F2F1"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/PE"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/kgCO2eqTotal"
+        android:layout_width="90dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/textview"
+        android:textColor="#E0F2F1"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/GWP"
+        app:layout_constraintTop_toBottomOf="@+id/chart3"
+        tools:ignore="TextSizeCheck" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_calculate"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_btn"
+            android:text="@string/try_again"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="TextContrastCheck,TextSizeCheck,VisualLintButtonSize"
+            tools:layout_editor_absoluteX="32dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
