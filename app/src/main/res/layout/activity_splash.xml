@@ -65,7 +65,7 @@
             android:layout_weight="2"
             android:indeterminate="false"
             android:progressDrawable="@drawable/ic_launcher_adaptive_back"
-            android:scrollbarSize="24dp" />
+            android:scrollbarSize="58dp" />
 
         <TextView
             android:id="@+id/textView"

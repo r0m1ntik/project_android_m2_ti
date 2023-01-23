@@ -39,7 +39,7 @@
 
             <TextView
                 android:id="@+id/BoaviztaTextHeader"
-                android:layout_width="322dp"
+                android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:layout_marginTop="8dp"
                 android:clickable="true"
@@ -58,315 +58,336 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="-6dp"
             android:layout_marginEnd="0dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/d_couvrez_l_impact_environnemental_de_votre_serveur_en_quelques_clics"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="#00838F"
-            android:textSize="14sp"
+            android:textSize="12sp"
+            tools:ignore="TextSizeCheck" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <TextView
+            android:id="@+id/title_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/config_server"
+            android:textAlignment="center"
+            android:textColor="#E0F2F1"
+            android:textSize="20sp"
+            android:layout_marginTop="32dp"
             tools:ignore="TextSizeCheck" />
     </LinearLayout>
 
-    <NumberPicker
-        android:id="@+id/ram_qt_capacity"
-        android:layout_width="87dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="48dp"
-        android:textColorHint="#E0F2F1"
-        app:layout_constraintStart_toEndOf="@+id/ram_quantite"
-        app:layout_constraintTop_toBottomOf="@+id/ram_capacity" />
-
-    <NumberPicker
-        android:id="@+id/ssd_nb_capacity"
-        android:layout_width="87dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="48dp"
-        android:textColorHint="#E0F2F1"
-        app:layout_constraintStart_toEndOf="@+id/ssd_nb_quantite"
-        app:layout_constraintTop_toBottomOf="@+id/ssd_capacity" />
-
-    <TextView
-        android:id="@+id/ram_capacity"
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="34dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/capacity_gb"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cpu_quantite4"
-        app:layout_constraintTop_toBottomOf="@+id/cpu_core_unit" />
-
-    <TextView
-        android:id="@+id/ssd_capacity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="34dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/capacity_gb"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/ssd_quantite"
-        app:layout_constraintTop_toBottomOf="@+id/ram_qt_capacity" />
-
-    <TextView
-        android:id="@+id/ssd_capacity2"
-        android:layout_width="265dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="34dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/capacity_gb"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/ssd_quantite"
-        app:layout_constraintTop_toBottomOf="@+id/ssd_nb_capacity" />
-
-    <TextView
-        android:id="@+id/ram_manifacture"
-        android:layout_width="156dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="34dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/manufacturer"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/ram_capacity"
-        app:layout_constraintTop_toBottomOf="@+id/cpu_name_architecture" />
-
-    <TextView
-        android:id="@+id/ssd_manufacturer"
-        android:layout_width="156dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="34dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/manufacturer"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/ssd_capacity"
-        app:layout_constraintTop_toBottomOf="@+id/ram_name_manufacturer" />
-
-    <TextView
-        android:id="@+id/cpu_quantite4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="34dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/quantite"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpu_qt_np" />
-
-    <TextView
-        android:id="@+id/cpu_quantite6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="34dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/quantite"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ssd_nb_quantite" />
-
-    <TextView
-        android:id="@+id/ssd_quantite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="34dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/quantite"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ram_quantite" />
-
-    <TextView
-        android:id="@+id/title_content"
-        android:layout_width="304dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="100dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/config_server"
-        android:textAlignment="center"
-        android:textColor="#E0F2F1"
-        android:textSize="20sp"
+        android:layout_height="551dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:ignore="TextSizeCheck" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.876"
+        tools:ignore="TextSizeCheck">
 
-    <TextView
-        android:id="@+id/cpu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/cpu"
-        android:textColor="#E0F2F1"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_content" />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            android:layout_column="4"
+            android:stretchColumns="0,2"
+            tools:ignore="ObsoleteLayoutParam">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/ram"
-        android:textColor="#E0F2F1"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpu_qt_np" />
+            <TableRow android:layout_marginTop="24dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/ssd"
-        android:textColor="#E0F2F1"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ram_quantite" />
+                <TextView
+                    android:id="@+id/cpu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="14dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/cpu"
+                    android:textColor="#E0F2F1"
+                    android:textSize="18sp" />
+            </TableRow>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/hdd"
-        android:textColor="#E0F2F1"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ssd_nb_quantite" />
+            <TableRow>
 
-    <TextView
-        android:id="@+id/cpu_quantite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/quantite"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpu" />
+                <TextView
+                    android:id="@+id/cpu_quantite"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="14dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/quantite"
+                    android:layout_span="1"
+                    android:textAlignment="viewStart"
+                    android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/nbr_coeur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/nb_coeurs"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cpu_quantite"
-        app:layout_constraintTop_toBottomOf="@+id/cpu" />
+                <TextView
+                    android:id="@+id/nbr_coeur"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_span="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/nb_coeurs"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/cpu_architecture"
-        android:layout_width="156dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/architecture"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/nbr_coeur"
-        app:layout_constraintTop_toBottomOf="@+id/cpu" />
+                <TextView
+                    android:id="@+id/cpu_architecture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_span="2"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/architecture"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+            </TableRow>
 
-    <NumberPicker
-        android:id="@+id/cpu_qt_np"
-        style="@android:style/Widget.Material.NumberPicker"
-        android:layout_width="54dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:textColorHint="#E0F2F1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpu_quantite" />
+            <TableRow>
 
-    <NumberPicker
-        android:id="@+id/ram_quantite"
-        android:layout_width="54dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:textColorHint="#E0F2F1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpu_quantite4" />
+                <NumberPicker
+                    android:id="@+id/cpu_qt_np"
+                    style="@android:style/Widget.Material.NumberPicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="14dp"
+                    android:textColorHint="#E0F2F1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="VisualLintTextFieldSize" />
 
-    <NumberPicker
-        android:id="@+id/ssd_nb_quantite"
-        android:layout_width="54dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:textColorHint="#E0F2F1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ssd_quantite" />
+                <NumberPicker
+                    android:id="@+id/cpu_core_unit"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="8dp"
+                    android:textColorHint="#E0F2F1" />
 
-    <NumberPicker
-        android:id="@+id/hdd_nb_quantite"
-        android:layout_width="54dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:textColorHint="#E0F2F1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpu_quantite6" />
+                <NumberPicker
+                    android:id="@+id/cpu_name_architecture"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="8dp"
+                    android:textColorHint="#E0F2F1"
+                    tools:ignore="VisualLintTextFieldSize" />
+            </TableRow>
 
-    <NumberPicker
-        android:id="@+id/cpu_core_unit"
-        android:layout_width="66dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="50dp"
-        android:textColorHint="#E0F2F1"
-        app:layout_constraintStart_toEndOf="@+id/cpu_qt_np"
-        app:layout_constraintTop_toBottomOf="@+id/nbr_coeur" />
+            <TableRow>
 
-    <NumberPicker
-        android:id="@+id/cpu_name_architecture"
-        android:layout_width="156dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="42dp"
-        android:textColorHint="#E0F2F1"
-        app:layout_constraintStart_toEndOf="@+id/cpu_core_unit"
-        app:layout_constraintTop_toBottomOf="@+id/cpu_architecture" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/ram"
+                    android:textColor="#E0F2F1"
+                    android:textSize="18sp" />
+            </TableRow>
 
-    <NumberPicker
-        android:id="@+id/ram_name_manufacturer"
-        android:layout_width="156dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="21dp"
-        android:textColorHint="#E0F2F1"
-        app:layout_constraintStart_toEndOf="@+id/ram_qt_capacity"
-        app:layout_constraintTop_toBottomOf="@+id/ram_manifacture" />
+            <TableRow>
 
-    <NumberPicker
-        android:id="@+id/hdd_nb_capacity"
-        android:layout_width="265dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="48dp"
-        android:textColorHint="#E0F2F1"
-        app:layout_constraintStart_toEndOf="@+id/hdd_nb_quantite"
-        app:layout_constraintTop_toBottomOf="@+id/ssd_capacity2" />
+                <TextView
+                    android:id="@+id/cpu_quantite6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/quantite"
+                    android:textAlignment="viewStart"
+                    android:textStyle="bold" />
 
-    <NumberPicker
-        android:id="@+id/ssd_name_manufacturer"
-        android:layout_width="156dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="21dp"
-        android:textColorHint="#E0F2F1"
-        app:layout_constraintStart_toEndOf="@+id/ssd_nb_capacity"
-        app:layout_constraintTop_toBottomOf="@+id/ssd_manufacturer" />
+                <TextView
+                    android:id="@+id/ram_capacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/capacity_gb"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ram_manifacture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/manufacturer"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow>
+
+                <NumberPicker
+                    android:id="@+id/ram_quantite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="14dp"
+                    android:textColorHint="#E0F2F1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="VisualLintTextFieldSize" />
+
+                <NumberPicker
+                    android:id="@+id/ram_qt_capacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="8dp"
+                    android:textColorHint="#E0F2F1" />
+
+                <NumberPicker
+                    android:id="@+id/ram_name_manufacturer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="8dp"
+                    android:textColorHint="#E0F2F1"
+                    tools:ignore="VisualLintTextFieldSize" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/ssd"
+                    android:textColor="#E0F2F1"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/ssd_quantite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/quantite"
+                    android:textAlignment="viewStart"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ssd_capacity"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/capacity_gb"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ssd_manufacturer"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/manufacturer"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow>
+
+                <NumberPicker
+                    android:id="@+id/ssd_nb_quantite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="14dp"
+                    android:textColorHint="#E0F2F1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="VisualLintTextFieldSize" />
+
+                <NumberPicker
+                    android:id="@+id/ssd_nb_capacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="8dp"
+                    android:textColorHint="#E0F2F1" />
+
+                <NumberPicker
+                    android:id="@+id/ssd_name_manufacturer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="8dp"
+                    android:textColorHint="#E0F2F1"
+                    tools:ignore="VisualLintTextFieldSize" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/hdd"
+                    android:textColor="#E0F2F1"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/quantite"
+                    android:textAlignment="viewStart"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/capacity_gb"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow>
+
+                <NumberPicker
+                    android:id="@+id/hdd_nb_quantite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="14dp"
+                    android:textColorHint="#E0F2F1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="VisualLintTextFieldSize" />
+
+                <NumberPicker
+                    android:id="@+id/hdd_nb_capacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_span="2"
+                    android:layout_marginStart="8dp"
+                    android:textColorHint="#E0F2F1"
+                    tools:ignore="VisualLintTextFieldSize" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/linearLayout"
